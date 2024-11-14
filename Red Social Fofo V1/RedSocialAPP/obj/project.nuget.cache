@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ArY8qxDBmEw=",
+  "dgSpecHash": "SGYxn+Vvn4k=",
   "success": true,
-  "projectFilePath": "C:\\Users\\frank\\Desktop\\Red Social Fofo V1\\RedSocialAPP\\RedSocialAPP.csproj",
+  "projectFilePath": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\RedSocialAPP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\frank\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\frank\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

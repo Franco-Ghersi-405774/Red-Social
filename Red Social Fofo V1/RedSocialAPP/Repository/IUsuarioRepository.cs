@@ -14,7 +14,9 @@ namespace RedSocialAPP.Repository
 
         Task<Usuario> FindByEmail(string email);
 
-        Task<Usuario> FindUser(string user_email, string password);
+        Task<Usuario> ExisteMailUsuario(string email, string usuario);
+
+        Task<Usuario> IniciarSesion(string user_email, string password);
 
         Task<Usuario> PostUser(UsuarioDTO usuario);
 

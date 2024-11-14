@@ -18,6 +18,9 @@ namespace RedSocialAPP.Repository
             _mapper = mapper;
         }
 
+
+
+
         public async Task<Usuario> FindByEmail(string email)
         {
             var result = await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == email);
@@ -45,7 +48,7 @@ namespace RedSocialAPP.Repository
 
         public async Task<Usuario> FindByName(string nombre)
         {
-            var result = await _context.Usuarios.FirstOrDefaultAsync(x => x.Nombre == nombre);
+            var result = await _context.Usuarios.FirstOrDefaultAsync(x => x.Nombre == nombre );
 
             if (result == null)
             {
@@ -73,7 +76,7 @@ namespace RedSocialAPP.Repository
         }
        
         
-        public async Task<Usuario> FindUser(string user_email, string password)
+        public async Task<Usuario> IniciarSesion(string user_email, string password)
         {
             var result = await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == user_email && x.Contraseña == password || x.Usuario1 == user_email && x.Contraseña == password);
 
@@ -84,6 +87,21 @@ namespace RedSocialAPP.Repository
 
             else { return result; }
         }
+
+
+        public async Task<Usuario> ExisteMailUsuario(string user_email, string username) {
+
+            var resultado = await _context.Usuarios.FirstOrDefaultAsync(x => x.Usuario1 == username || x.Email == user_email );
+
+            if (resultado == null) {
+
+                return null;
+            }
+            return resultado;
+
+        }
+
+
 
         public async Task<Usuario> PostUser(UsuarioDTO usuariodto)
         {

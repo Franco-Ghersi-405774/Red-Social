@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    $("#iniciarSesion").validate({
+    $("#iniciarSesionform").validate({
         rules: {
             usuario_mail: {
                 required: true,
@@ -21,11 +21,16 @@ $(document).ready(function () {
                 minlength: "El nombre debe tener al menos 1 carácter"
             }
         },
-        errorClass: "is-invalid", // Clases de Bootstrap para estilos de error
-        validClass: "is-valid",   // Clase para estilo válido en verde
-        
-        submitHandler: function (form) {
-            form.submit(); // Envía el formulario si es válido
+        errorClass: "is-invalid",
+        validClass: "is-valid",
+    });
+
+
+
+
+    $("#iniciarSesionform").on("submit", function (event) {
+        if ($(this).valid()) { // Solo llama a iniciarSesion si el formulario es válido
+            iniciarSesion(event);
         }
     });
 });
@@ -34,35 +39,39 @@ $(document).ready(function () {
 
 
 
-function iniciarSesion() {
-    // Obtener los valores de los campos de email y contraseña
-    const usuario = document.getElementById("inputUsuario").value;
-    const nombre = document.getElementById("inputNombre").value;
+function iniciarSesion(event) {
 
-    const email = document.getElementById("inputEmail").value;
-    const password = document.getElementById("inputContraseña").value;
+    //para que no recarge la pagina al tocar sumbit
+    event.preventDefault();
+    // Obtener los valores de los campos de email y contraseña
+
+
+
+    const usuario = document.getElementById("InputUsuario").value;
+
+    const pass = document.getElementById("inputContraseña").value;
 
     // Verificar que los campos no estén vacíos
-    if (!email || !password) {
+    if (!usuario || !pass) {
         alert("Por favor, ingresa el email y la contraseña");
         return;
     }
 
     // Llamar a la API
-    fetch("https://localhost:7214/Iniciar Sesion", {
-        method: "GET",
+    fetch("https://localhost:7214/IniciarSesion", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: email,
-            password: password,
+            email: usuario,
+            password: pass,
         }),
     })
         .then(response => {
             if (response.ok) {
 
-                
+
                 return response.json();
             } else {
                 throw new Error("Email o contraseña incorrectos");
@@ -72,14 +81,12 @@ function iniciarSesion() {
             // Procesar la respuesta de la API si el inicio de sesión es exitoso
             alert("Inicio de sesión exitoso");
             // Redireccionar a la página principal o guardar el token si es necesario
+            window.location.href = "PrincipalPage.html";
             // Por ejemplo: window.location.href = "/home";
-
             localStorage.setItem("User", usuario)
-                localStorage.setItem("Name", nombre)
-                localStorage.setItem("Email",email)
-                localStorage.setItem("Password",password)
-
-                window.location.href = "PrincipalPage.html"
+            localStorage.setItem("Name", nombre)
+            localStorage.setItem("Email", email)
+            localStorage.setItem("Password", password)
 
         })
         .catch(error => {

@@ -49,9 +49,9 @@ $(document).ready(function () {
                 email: "Ingresa una dirección de correo válida"
             }
         },
-        errorClass: "is-invalid", 
-        validClass: "is-valid",  
-     
+        errorClass: "is-invalid",
+        validClass: "is-valid",
+
         submitHandler: function (form) {
             if ($("#crearCuenta").valid()) {
                 Grabar();
@@ -60,43 +60,43 @@ $(document).ready(function () {
     });
 });
 
-function Grabar(){
+function Grabar() {
 
-    const usuario1 = document.getElementById("inputUsuario")
-    const nombre = document.getElementById("inputNombre") 
-    const email = document.getElementById("inputUsuario");
-    const contraseña = document.getElementById("inputContraseña")
+    const userr = document.getElementById("inputUsuario").value;
+    const namee = document.getElementById("inputNombre").value;
+    const emaill = document.getElementById("inputUsuario").value;
+    const passwordd = document.getElementById("inputContraseña").value;
 
 
-    fetch("https://localhost:7214/CrearUsuario",{
+    fetch("https://localhost:7214/CrearUsuario", {
 
-        method : "POST",
-        headers : {
+        method: "POST",
+        headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            userr : usuario1,
-            namee : nombre,
-            emaill : email,
-            passwordd : contraseña
+            usuario1: userr,
+            nombre: namee,
+            email: emaill,
+            contraseña: passwordd
 
         })
     })
-    .then(response => response.json())
-    .then(response => {
+        .then(response => response.json())
+        .then(response => {
 
 
-        localStorage.setItem("Name", namee)
-        localStorage.setItem("User", userr)
-        localStorage.setItem("Email",emaill)
-        localStorage.setItem("Password",passwordd)
+            localStorage.setItem("User", userr)
+            localStorage.setItem("Name", namee)
+            localStorage.setItem("Email", emaill)
+            localStorage.setItem("Password", passwordd)
 
-        window.location.href = "PrincipalPage.html"
-    })
+            window.location.href = "PrincipalPage.html"
+        })
 
-    .catch(error => {
-        alert("No se pudo crear el usuario")
-    })
+        .catch(error => {
+            alert("No se pudo crear el usuario")
+        })
 
 
 

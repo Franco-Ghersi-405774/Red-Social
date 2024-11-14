@@ -82,13 +82,11 @@ namespace RedSocialAPP.Controllers
             }
         }
 
-
-        //tamal
-        [HttpGet("Iniciar Sesion")]
-        public async Task<IActionResult> GetUserByUser(string user, string password)
+        [HttpGet("IniciarSesion")]
+        public async Task<IActionResult> IniciarSesion(string user, string password)
         {
 
-            var response = await _repository.FindUser(user,password);
+            var response = await _repository.IniciarSesion(user,password);
 
             if (response == null)
             {
@@ -105,16 +103,43 @@ namespace RedSocialAPP.Controllers
 
         public async Task<IActionResult> PostUser([FromBody]UsuarioDTO usuario)
         {
-            var response = await _repository.PostUser(usuario);
+            var usuarioExiste = await _repository.ExisteMailUsuario(usuario.Email,usuario.Usuario1);
+            Usuario user = null;
 
-            if (response != null)
+            if (usuarioExiste == null)
             {
-                return Ok(response);
-            }
-            else { return NotFound(); }
+                user = await _repository.PostUser(usuario);
 
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else {
+                    return NotFound();
+                }
+
+            }
+           
+           return Conflict("El usuario o el correo ya están registrados.");
 
         }
+
+
+        ////controller para consultar si ya existe el mail o el usuario, ya que no se puede crear 2 cuentas con el mismo mail o nombre de usuario anashei
+        //[HttpPost("ConsultarMailyUsuario")]
+        ////creamos que sea TASK por que es un asyncono que puede devuelve un valor ponele
+        //public async Task<Usuario> ConsultarMailUsuario(string mail,string usuario) 
+        //{ 
+
+        //    var user = await _repository.ExisteMailUsuario(mail,usuario);
+            
+
+        //    if(user == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //}
 
     }
 }
