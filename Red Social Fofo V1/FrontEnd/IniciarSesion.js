@@ -47,15 +47,17 @@ function iniciarSesion(event) {
 
 
 
-    const usuario = document.getElementById("InputUsuario").value;
+    const user = document.getElementById("InputUsuario").value;
 
-    const pass = document.getElementById("inputContraseña").value;
+    const pass = document.getElementById("inputPassword").value;
 
     // Verificar que los campos no estén vacíos
-    if (!usuario || !pass) {
+    if (!user || !pass) {
         alert("Por favor, ingresa el email y la contraseña");
         return;
     }
+
+    debugger
 
     // Llamar a la API
     fetch("https://localhost:7214/IniciarSesion", {
@@ -64,8 +66,8 @@ function iniciarSesion(event) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            email: usuario,
-            password: pass,
+            Usuario: user,
+            Password: pass,
         }),
     })
         .then(response => {
@@ -74,7 +76,7 @@ function iniciarSesion(event) {
 
                 return response.json();
             } else {
-                throw new Error("Email o contraseña incorrectos");
+                throw new Error("Email o contraseña incorrectosss");
             }
         })
         .then(data => {
@@ -83,10 +85,7 @@ function iniciarSesion(event) {
             // Redireccionar a la página principal o guardar el token si es necesario
             window.location.href = "PrincipalPage.html";
             // Por ejemplo: window.location.href = "/home";
-            localStorage.setItem("User", usuario)
-            localStorage.setItem("Name", nombre)
-            localStorage.setItem("Email", email)
-            localStorage.setItem("Password", password)
+            localStorage.setItem("User", user)
 
         })
         .catch(error => {

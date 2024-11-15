@@ -91,7 +91,7 @@ function Grabar() {
             localStorage.setItem("Email", emaill)
             localStorage.setItem("Password", passwordd)
 
-            window.location.href = "PrincipalPage.html"
+            window.location.href = "IniciarSesion.html"
         })
 
         .catch(error => {

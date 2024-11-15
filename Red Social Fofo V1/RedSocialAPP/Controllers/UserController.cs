@@ -82,11 +82,12 @@ namespace RedSocialAPP.Controllers
             }
         }
 
-        [HttpGet("IniciarSesion")]
-        public async Task<IActionResult> IniciarSesion(string user, string password)
+        [Route("/IniciarSesion")]
+        [HttpPost("IniciarSesion")]
+        public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesionDTO datos)
         {
 
-            var response = await _repository.IniciarSesion(user,password);
+            var response = await _repository.IniciarSesion(datos.Usuario, datos.Password);
 
             if (response == null)
             {

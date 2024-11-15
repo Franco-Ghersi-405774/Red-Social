@@ -3,13 +3,13 @@
   "WorkspaceRootPath": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialSkySphere\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9F26F66-ED68-4F08-9B84-4F0701DE78AC}|..\\RedSocialAPP\\RedSocialAPP.csproj|c:\\users\\frank\\desktop\\red social github\\red-social\\red social fofo v1\\redsocialapp\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B9F26F66-ED68-4F08-9B84-4F0701DE78AC}|..\\RedSocialAPP\\RedSocialAPP.csproj|c:\\users\\frank\\desktop\\red social github\\red-social\\red social fofo v1\\redsocialapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9F26F66-ED68-4F08-9B84-4F0701DE78AC}|..\\RedSocialAPP\\RedSocialAPP.csproj|c:\\users\\frank\\desktop\\red social github\\red-social\\red social fofo v1\\redsocialapp\\repository\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9F26F66-ED68-4F08-9B84-4F0701DE78AC}|..\\RedSocialAPP\\RedSocialAPP.csproj|c:\\users\\frank\\desktop\\red social github\\red-social\\red social fofo v1\\redsocialapp\\repository\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9F26F66-ED68-4F08-9B84-4F0701DE78AC}|..\\RedSocialAPP\\RedSocialAPP.csproj|c:\\users\\frank\\desktop\\red social github\\red-social\\red social fofo v1\\redsocialapp\\dtos\\iniciarsesiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,43 +19,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 286,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Repository\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "..\\RedSocialAPP\\Repository\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Repository\\IUsuarioRepository.cs",
-              "RelativeToolTip": "..\\RedSocialAPP\\Repository\\IUsuarioRepository.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBAAAAAnAAAA",
+              "Title": "IniciarSesionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Dtos\\IniciarSesionDTO.cs",
+              "RelativeDocumentMoniker": "..\\RedSocialAPP\\Dtos\\IniciarSesionDTO.cs",
+              "ToolTip": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Dtos\\IniciarSesionDTO.cs",
+              "RelativeToolTip": "..\\RedSocialAPP\\Dtos\\IniciarSesionDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T07:32:58.553Z",
+              "WhenOpened": "2024-11-15T03:22:29.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Repository\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "..\\RedSocialAPP\\Repository\\UsuarioRepository.cs",
               "ToolTip": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Repository\\UsuarioRepository.cs",
               "RelativeToolTip": "..\\RedSocialAPP\\Repository\\UsuarioRepository.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAEgAAAANAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFAAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-14T06:22:46.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "..\\RedSocialAPP\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\frank\\Desktop\\Red Social Github\\Red-Social\\Red Social Fofo V1\\RedSocialAPP\\Controllers\\UserController.cs",
               "RelativeToolTip": "..\\RedSocialAPP\\Controllers\\UserController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAAAFQAAAAZAAAA",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAQwFMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-14T06:22:28.129Z",
               "EditorCaption": ""
