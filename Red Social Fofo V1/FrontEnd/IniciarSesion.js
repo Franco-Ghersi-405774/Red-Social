@@ -72,11 +72,9 @@ function iniciarSesion(event) {
     })
         .then(response => {
             if (response.ok) {
-
-
                 return response.json();
             } else {
-                throw new Error("Email o contraseña incorrectosss");
+                throw new Error("Usuario o contraseña incorrectosss");
             }
         })
         .then(data => {
@@ -86,6 +84,7 @@ function iniciarSesion(event) {
             window.location.href = "PrincipalPage.html";
             // Por ejemplo: window.location.href = "/home";
             localStorage.setItem("User", user)
+            localStorage.setItem('token', data.token);
 
         })
         .catch(error => {

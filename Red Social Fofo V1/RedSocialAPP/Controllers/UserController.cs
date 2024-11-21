@@ -2,6 +2,12 @@
 using RedSocialAPP.Dtos;
 using RedSocialAPP.Models;
 using RedSocialAPP.Repository;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RedSocialAPP.Controllers
 {
@@ -33,7 +39,6 @@ namespace RedSocialAPP.Controllers
 
         }
 
-        //tamal
         [HttpGet("GetByID")]
         public async Task<IActionResult> GetUserByID(int id) {
         
@@ -82,23 +87,7 @@ namespace RedSocialAPP.Controllers
             }
         }
 
-        [Route("/IniciarSesion")]
-        [HttpPost("IniciarSesion")]
-        public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesionDTO datos)
-        {
-
-            var response = await _repository.IniciarSesion(datos.Usuario, datos.Password);
-
-            if (response == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                //var token = Token(response); // Método para generar el token
-                return Ok(new { Usuario = response});
-            }
-        }
+       
 
         [HttpPost("CrearUsuario")]
 
@@ -126,6 +115,96 @@ namespace RedSocialAPP.Controllers
         }
 
 
+        //[Route("/IniciarSesion")]
+        [HttpPost("IniciarSesion")]
+        public async Task<IActionResult> IniciarSesion([FromBody] IniciarSesionDTO datos)
+        {
+
+            var usuario = await _repository.IniciarSesion(datos.Usuario, datos.Password);
+
+            if (usuario == null)
+            {
+                return Unauthorized(new { mensaje = "Usuario o contraseña incorrectos" });
+            }
+
+
+
+
+            //var token = Token(response); // Método para generar el token
+
+            //CREAR LAS CLAIMS / DATOS DEL USUARIO
+            var claimss = new[]
+            {
+                new Claim(ClaimTypes.Name, usuario.Nombre),
+                new Claim(ClaimTypes.Email, usuario.Email),
+                new Claim("IdUsuario",usuario.IdUsuario.ToString())
+
+            };
+
+
+            //Generar el TOKEN
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Eljefecrackdelcounterstrikeeselcazaputas42"));
+            //firmar credenciales
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+
+            var token = new JwtSecurityToken(
+                
+                
+                issuer : "https://localhost:7214",
+                audience : "http://127.0.0.1:5500",
+                claims : claimss,
+                expires: DateTime.Now.AddHours(1),
+                signingCredentials : creds
+                
+            );
+
+
+
+
+            return Ok(
+                new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    usuario = new { Usuario = usuario }
+                });
+        }
+
+
+
+        [Authorize]
+        [HttpGet("DatosProtegidos")]
+        public IActionResult DatosProtegidos()
+        {
+            var idUsuario = User.Claims.FirstOrDefault(c => c.Type == "IdUsuario")?.Value;
+            return Ok(new { mensaje = "Acceso autorizado", idUsuario });
+        }
+
+
+        [Authorize]
+        [HttpGet("GetPerfil")]
+        public IActionResult GetPerfil()
+        {
+            var claims = User.Claims;
+
+            var nombre = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var idUsuario = claims.FirstOrDefault(c => c.Type == "IdUsuario")?.Value;
+
+
+            return Ok(new
+            {
+                Nombre = nombre,
+                Email = email,
+                IdUsuario = idUsuario
+            });
+        }
+
+
+
+
+
         ////controller para consultar si ya existe el mail o el usuario, ya que no se puede crear 2 cuentas con el mismo mail o nombre de usuario anashei
         //[HttpPost("ConsultarMailyUsuario")]
         ////creamos que sea TASK por que es un asyncono que puede devuelve un valor ponele
@@ -133,7 +212,7 @@ namespace RedSocialAPP.Controllers
         //{ 
 
         //    var user = await _repository.ExisteMailUsuario(mail,usuario);
-            
+
 
         //    if(user == null)
         //    {
